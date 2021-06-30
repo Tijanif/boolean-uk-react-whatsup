@@ -9,50 +9,31 @@ export default function App() {
     getUsers();
   }, []);
 
-  console.log(usersList);
-
   return (
     <>
       <div class='main-wrapper login'>
         <section class='login-section'>
           <h2>Choose your user!</h2>
           <ul>
-            <li>
-              <button class='user-selection'>
-                <img
-                  class='avatar'
-                  width='50'
-                  height='50'
-                  src='https://robohash.org/1'
-                  alt=''
-                />
-                <h3>John Doe</h3>
-              </button>
-            </li>
-            <li>
-              <button class='user-selection'>
-                <img
-                  class='avatar'
-                  width='50'
-                  height='50'
-                  src='https://robohash.org/2'
-                  alt=''
-                />
-                <h3>Tin Man</h3>
-              </button>
-            </li>
-            <li>
-              <button class='user-selection'>
-                <img
-                  class='avatar'
-                  width='50'
-                  height='50'
-                  src='https://robohash.org/3'
-                  alt=''
-                />
-                <h3>Carl T-800</h3>
-              </button>
-            </li>
+            {usersList.map((user, index) => {
+              return (
+                <li key={index}>
+                  <button class='user-selection'>
+                    <img
+                      class='avatar'
+                      width='50'
+                      height='50'
+                      src={user.avatar}
+                      alt={user.firstName}
+                    />
+                    <h3>
+                      {user.firstName} {user.lastName}
+                    </h3>
+                  </button>
+                </li>
+              );
+            })}
+
             <li>
               <button class='user-selection'>
                 <h3>+ Add a new user</h3>
